@@ -250,7 +250,7 @@
 
 <script>
   // ⚠️ 請在此處替換成您在 步驟一 取得的 Google Web App URL
-  const GAS_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+  const GAS_URL = "https://script.google.com/macros/s/AKfycbz2zgqWa7L6TJCOdM9AgiXqhXwBksFGoveNOSRqHEXCA5YwI5_L-hwazWrl7x3DHhOAxA/exec";
 
   document.getElementById('registrationForm').addEventListener('submit', function(e) {
     e.preventDefault();
