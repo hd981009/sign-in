@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台北同樂會 - 體驗活動報名系統</title>
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #e9f2ff;
+      --accent-color: #ff9800;
+      --text-color: #333;
+      --bg-color: #f4f7f6;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    h1 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .notice-box {
+      background-color: var(--secondary-color);
+      border-left: 5px solid var(--primary-color);
+      padding: 15px;
+      margin-bottom: 25px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-row {
+      display: flex;
+      gap: 15px;
+    }
+    .form-row .form-group {
+      flex: 1;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    input[type="text"], input[type="tel"], select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+    .section-title {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--secondary-color);
+      padding-bottom: 8px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    .course-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      background: #fafafa;
+    }
+    .course-title {
+      font-weight: bold;
+      font-size: 1.05rem;
+      color: #222;
+    }
+    .course-info {
+      font-size: 0.88rem;
+      color: #666;
+      margin: 5px 0 10px 0;
+      line-height: 1.4;
+    }
+    .tag {
+      display: inline-block;
+      background: #e2e8f0;
+      color: #475569;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin-right: 5px;
+    }
+    .submit-btn {
+      width: 100%;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 20px;
+    }
+    .submit-btn:hover {
+      background-color: #004085;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>台北同樂會 - 體驗活動報名</h1>
+  
+  <div class="notice-box">
+    📢 <strong>報名須知：</strong><br>
+    1. <strong>報名期限：</strong>即日起至 <strong>8/7 (五) 中午 12:00 止</strong>。<br>
+    2. <strong>建議原則：</strong>為讓更多同仁體驗，每位學童建議報名 1 個課程（若有名額考量可填寫候補）。<br>
+    3. <strong>課程對象：</strong>國中以下學生（家長可在攤位陪同）。<br>
+    4. 8/15 當天請準時報到，以便活動順利進行。
+  </div>
+
+  <form id="registrationForm">
+    <div class="section-title">1. 基本資料</div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="parentName">家長姓名（本會同仁） *</label>
+        <input type="text" id="parentName" required placeholder="請輸入同仁姓名">
+      </div>
+      <div class="form-group">
+        <label for="phone">聯絡電話 *</label>
+        <input type="tel" id="phone" required placeholder="09xx-xxx-xxx">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="childName">參加者姓名（學童） *</label>
+        <input type="text" id="childName" required placeholder="請輸入小朋友姓名">
+      </div>
+      <div class="form-group">
+        <label for="grade">參加者年級 *</label>
+        <input type="text" id="grade" required placeholder="如：幼兒園 / 國小低年級 / 國二">
+      </div>
+    </div>
+
+    <div class="section-title">2. 選擇體驗場次（請選擇欲報名場次與候補場次）</div>
+
+    <div class="form-group">
+      <label for="choice1">第一志願 (正取) *</label>
+      <select id="choice1" required>
+        <option value="">-- 請選擇正取場次 --</option>
+        <!-- 吳寶春 -->
+        <option value="[M0814] 小小冠軍麵包師 - 10:00-11:30">[M0814] 吳寶春 - 小小冠軍麵包師 (10:00-11:30, 限20名)</option>
+        <option value="[M0814] 小小冠軍麵包師 - 14:00-15:30">[M0814] 吳寶春 - 小小冠軍麵包師 (14:00-15:30, 限5名)</option>
+        <!-- 舞鈴劇場 -->
+        <option value="[M0731] 扯鈴體驗 - 13:00">[M0731] 舞鈴劇場 - 扯鈴體驗 (13:00, 限10名)</option>
+        <option value="[M0731] 扯鈴體驗 - 14:00">[M0731] 舞鈴劇場 - 扯鈴體驗 (14:00, 限10名)</option>
+        <!-- 陸地曲棍球 -->
+        <option value="[N0608] 陸地曲棍球 - 13:00">[N0608] 陸地曲棍球 - 小國手大夢想 (13:00, 限5名)</option>
+        <option value="[N0608] 陸地曲棍球 - 14:00">[N0608] 陸地曲棍球 - 小國手大夢想 (14:00, 限5名)</option>
+        <!-- 未來建築 -->
+        <option value="[M0720] 未來建築工程師 - 12:00">[M0720] 未來建築工程師 (12:00, 限8名)</option>
+        <option value="[M0720] 未來建築工程師 - 13:00">[M0720] 未來建築工程師 (13:00, 限8名)</option>
+        <option value="[M0720] 未來建築工程師 - 14:00">[M0720] 未來建築工程師 (14:00, 限8名)</option>
+        <!-- 工研院 -->
+        <option value="[M0614] 蝴蝶互動體驗 - 12:00">[M0614] 工研院 - 蝴蝶互動體驗 (12:00, 限12名)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="choice2">第二志願 (候補)（選填）</label>
+      <select id="choice2">
+        <option value="">-- 無 (不申請候補) --</option>
+        <!-- 吳寶春 -->
+        <option value="[M0814] 小小冠軍麵包師 - 10:00-11:30">[M0814] 吳寶春 - 小小冠軍麵包師 (10:00-11:30)</option>
+        <option value="[M0814] 小小冠軍麵包師 - 14:00-15:30">[M0814] 吳寶春 - 小小冠軍麵包師 (14:00-15:30)</option>
+        <!-- 舞鈴劇場 -->
+        <option value="[M0731] 扯鈴體驗 - 13:00">[M0731] 舞鈴劇場 - 扯鈴體驗 (13:00)</option>
+        <option value="[M0731] 扯鈴體驗 - 14:00">[M0731] 舞鈴劇場 - 扯鈴體驗 (14:00)</option>
+        <!-- 陸地曲棍球 -->
+        <option value="[N0608] 陸地曲棍球 - 13:00">[N0608] 陸地曲棍球 - 小國手大夢想 (13:00)</option>
+        <option value="[N0608] 陸地曲棍球 - 14:00">[N0608] 陸地曲棍球 - 小國手大夢想 (14:00)</option>
+        <!-- 未來建築 -->
+        <option value="[M0720] 未來建築工程師 - 12:00">[M0720] 未來建築工程師 (12:00)</option>
+        <option value="[M0720] 未來建築工程師 - 13:00">[M0720] 未來建築工程師 (13:00)</option>
+        <option value="[M0720] 未來建築工程師 - 14:00">[M0720] 未來建築工程師 (14:00)</option>
+        <!-- 工研院 -->
+        <option value="[M0614] 蝴蝶互動體驗 - 12:00">[M0614] 工研院 - 蝴蝶互動體驗 (12:00)</option>
+      </select>
+    </div>
+
+    <div class="section-title">3. 課程詳細資訊參考</div>
+
+    <!-- 課程一覽 -->
+    <div class="course-card">
+      <div class="course-title">1. [M0814] 吳寶春麥方店 - 小小冠軍麵包師 (百香鳳梨酥製作)</div>
+      <div class="course-info">
+        <span class="tag">時段：10:00-11:30 (20名)</span> <span class="tag">14:00-15:30 (5名)</span><br>
+        📝 <strong>備註：</strong>等待烘烤時，備有筆、貼紙等素材，供小朋友裝飾包裝袋。預估1.5小時（完成即提早結束）。
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-title">2. [M0731] 舞鈴劇場 - 扯鈴體驗</div>
+      <div class="course-info">
+        <span class="tag">時段：13:00 (10名)</span> <span class="tag">14:00 (10名)</span><br>
+        📝 <strong>備註：</strong>由大阪世博演出團隊帶領體驗。
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-title">3. [N0608] 陸地曲棍球 - 小國手大夢想</div>
+      <div class="course-info">
+        <span class="tag">時段：13:00 (5名)</span> <span class="tag">14:00 (5名)</span><br>
+        📝 <strong>備註：</strong>國家級教練現場指導。
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-title">4. [M0720] 未來建築工程師體驗館 - 未來建築工程師</div>
+      <div class="course-info">
+        <span class="tag">時段：12:00 (8名)</span> <span class="tag">13:00 (8名)</span> <span class="tag">14:00 (8名)</span><br>
+        📝 <strong>備註：</strong>建議12歲以下，陪同家長不需報名。由建造台北101的建築團隊專業指導。
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-title">5. [M0614] 工研院 - 大阪世博台灣館 生命劇場蝴蝶互動體驗</div>
+      <div class="course-info">
+        <span class="tag">時段：12:00 (12名)</span><br>
+        📝 <strong>備註：</strong>重現大阪世博台灣館互動風采。
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn" id="submitBtn">確認送出報名</button>
+  </form>
+</div>
+
+<script>
+  // ⚠️ 請在此處替換成您在 步驟一 取得的 Google Web App URL
+  const GAS_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+
+  document.getElementById('registrationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const choice1 = document.getElementById('choice1').value;
+    const choice2 = document.getElementById('choice2').value;
+
+    if (choice1 && choice1 === choice2) {
+      alert("第一志願與候補志願不能選擇同一個場次喔！");
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerText = "資料傳送中...";
+
+    const payload = {
+      parentName: document.getElementById('parentName').value,
+      phone: document.getElementById('phone').value,
+      childName: document.getElementById('childName').value,
+      grade: document.getElementById('grade').value,
+      choice1: choice1,
+      choice2: choice2
+    };
+
+    fetch(GAS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(() => {
+      alert("恭喜！報名資料已成功送出。");
+      document.getElementById('registrationForm').reset();
+      btn.disabled = false;
+      btn.innerText = "確認送出報名";
+    })
+    .catch(error => {
+      alert("送出失敗，請稍後再試。");
+      console.error(error);
+      btn.disabled = false;
+      btn.innerText = "確認送出報名";
+    });
+  });
+</script>
+
+</body>
+</html>
